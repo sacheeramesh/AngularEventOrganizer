@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div style=" background-color: #1976d2">
+    <button style="position: relative; float: right" mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-toolbar>
+    <span class="fill-remaining-space"></span>
+    <span>Event for {{selectedDate}}</span>
+
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+
+</div>
+<form [formGroup]="service.form" (submit)="onSubmit()" >
+
+    <div class="controles-container" >
+
+      <input hidden formControlName="$key">
+      <mat-form-field class="main-form-field">
+        <input formControlName="eventDes" matInput placeholder="New Event Description">
+        <mat-error>This is a mandatory. !</mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="normal-form-field">
+        <input formControlName="startTime" matInput placeholder="Start Time">
+      </mat-form-field>
+      <mat-form-field class="normal-form-field">
+        <input formControlName="endTime" matInput placeholder="End Time">
+      </mat-form-field>
+      <div class="button-row">
+        <button mat-flat-button color="primary" type="submit" [disabled] = "service.form.invalid">Submit</button>
+        <button mat-flat-button color="warn" (click)="onClear()">Clear</button>
+      </div>
+    </div>
+  </form>
